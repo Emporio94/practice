@@ -41,13 +41,14 @@ public class Bank {
     protected void setUpPeople(){
         List<String[]> csvPeople = loadCSV.getCSVRows("src/main/resource/people.csv");
         for (String[] row : csvPeople){
+            // Assume CSV format: Role, First Name, Last Name, Asset Type, Balance, Trades
             String role = row[0];
-            AssetType assetType = AssetType.valueOf(row[3]);
-            Person person = PersonFactory.createPerson(row);
-
+            AssetType assetType = AssetType.valueOf(row[3]); // Ensure AssetType enum matches CSV
+            Person person = PersonFactory.createPerson(row); // Implement PersonFactory for object creation
+            
             TraderAssetDesk desk = getTraderAssetDesk(assetType);
             if (desk != null) {
-                desk.addTrader(person);
+                desk.addTrader(person); 
             }
         }
     }
@@ -61,5 +62,6 @@ public class Bank {
         Bank bank = new Bank();
         bank.setUp();
         bank.allTrades();
+        bank.setUpPeople();
     }
 }
