@@ -41,7 +41,14 @@ public class Bank {
     protected void setUpPeople(){
         List<String[]> csvPeople = loadCSV.getCSVRows("src/main/resource/people.csv");
         for (String[] row : csvPeople){
-            //Task One
+            String role = row[0];
+            AssetType assetType = AssetType.valueOf(row[3]);
+            Person person = PersonFactory.createPerson(row);
+
+            TraderAssetDesk desk = getTraderAssetDesk(assetType);
+            if (desk != null) {
+                desk.addTrader(person);
+            }
         }
     }
 
