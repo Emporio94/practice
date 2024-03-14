@@ -13,8 +13,15 @@ public class TraderAssetDesk {
         traderGroup = new TraderGroup(assetType.name());
     }
 
-    public void addTrader(Trader trader){
-        //Task One
+    public void addTrader(Person trader){
+        // Grouping for Each Role
+        if (trader.getRole() == Role.TEAM_LEAD){
+            // Creating Unique Groups for Each Team Lead
+            TraderGroup traderGroup = new TraderGroup(trader.getName() + " Group");
+            newGroup.addTrader(trader);
+        } else {
+            traderGroup.add(trader);
+        }
     }
 
     public String getName(){
