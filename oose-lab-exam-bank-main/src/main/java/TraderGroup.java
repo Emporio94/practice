@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class TraderGroup{
 
+    protected List<Person> traders = new ArrayList<>();
     protected String name;
 
 
@@ -18,8 +19,9 @@ public class TraderGroup{
         //Task Two
     }
 
-    public void add(){
-        //Task One with the correct input parameter
+    public void add(Person trader){
+        // Adds a trader to this groups list of traders
+        this.traders.add(trader);
     }
 
 }
